@@ -8,7 +8,14 @@ fetch:	addrsel=pc irload=1 			# Address=PC, Load IR register
 # ALU operations on Rd,Rs,Rt
 # add Rd,Rs,Rt
 0:	aluop=add  op2sel=treg  dwrite=1  regsrc=aluout, goto fetch			# ALU=+, ALU 2nd op = treg, write from aluout to reg
+# sub Rd,Rs,Rt
 1:	aluop=sub  op2sel=treg  dwrite=1  regsrc=aluout, goto fetch
+# addi Rd,Rs,immed
+16: addrsel=pc imload=1
+	aluop=add  op2sel=immed dwrite=1  regsrc=aluout, goto pcincr
+# subi Rd,Rs,immed
+17: addrsel=pc imload=1
+	aluop=sub  op2sel=immed dwrite=1  regsrc=aluout, goto pcincr
 
 #
 # Jump compared to zero operations
@@ -16,6 +23,13 @@ fetch:	addrsel=pc irload=1 			# Address=PC, Load IR register
 # JNEZ Rs,immed  ; If Rs != 0, PC <- immed else  PC <- PC + 2
 40:	addrsel=pc  imload=1								            # Read Immediate operand -> IMRegister
 	aluop=sub  op2sel=const0, if z then pcincr else jump		    # If z then pcincr else jump to immed; opsel=0 means value of 2 (constant 0 is selected!!!)
+# JMP immed
+45: addrsel=pc imload=1
+	pcload=1  pcsel=immed, goto fetch
+# BEQ Rs, Rt, immed
+46: addrsel=pc imload=1
+	aluop=sub op2sel=treg, if z then branch else pcincr
+
 
 #
 # li Rd,Immed    ; Load immediate Rd, immed   
@@ -28,6 +42,9 @@ fetch:	addrsel=pc irload=1 			# Address=PC, Load IR register
 	addrsel=immed  datawrite=1  datasel=dreg, goto pcincr			# additional increment (cause immed was read) and then new command
 #	pcload=1  pcsel=pc, goto fetch                                  # not optimal way to do this, better goto to pcincr: instead (line above)
 
+# move Rd, Rs
+70:	dwrite=1  regsrc=sreg, goto fetch
+
 #
 # Other code which we call
 #
@@ -36,3 +53,6 @@ pcincr:	pcload=1  pcsel=pc, goto fetch
 
 # Set address to immed and goto new command; for jumps to absolute immed address
 jump:	pcload=1  pcsel=immed, goto fetch
+
+# PC <- PC + 2
+branch: pcload=1 pcsel=pcimmed, goto fetch
