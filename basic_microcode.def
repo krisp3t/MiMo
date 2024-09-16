@@ -8,6 +8,7 @@ fetch:	addrsel=pc irload=1 			# Address=PC, Load IR register
 # ALU operations on Rd,Rs,Rt
 # add Rd,Rs,Rt
 0:	aluop=add  op2sel=treg  dwrite=1  regsrc=aluout, goto fetch			# ALU=+, ALU 2nd op = treg, write from aluout to reg
+1:	aluop=sub  op2sel=treg  dwrite=1  regsrc=aluout, goto fetch
 
 #
 # Jump compared to zero operations
