@@ -109,7 +109,7 @@
     <a name="circuit" val="MiMo_v05"/>
     <a name="clabel" val="address"/>
     <a name="clabelfont" val="SansSerif plain 12"/>
-    <a name="simulationFrequency" val="128.0"/>
+    <a name="simulationFrequency" val="2048000.0"/>
     <appear>
       <path d="M61,51 Q65,61 69,51" fill="none" stroke="#808080" stroke-width="2"/>
       <rect fill="none" height="241" stroke="#000000" stroke-width="2" width="171" x="50" y="50"/>
@@ -1391,16 +1391,19 @@
     <comp lib="4" loc="(170,810)" name="ROM">
       <a name="appearance" val="classic"/>
       <a name="contents">addr/data: 8 32
-2000 80800 11000 39*0 4000 22*0 1000 0
-4000 62*0 21 1000c0 800 a00
+2000 80800 11000 11001 14*0 4000 4000 22*0
+4000 4*0 4000 4000 4000 15*0 1000 0
+4000 4*0 19000 57*0 11010 11011 40021 a00
+40001 40001 1000c0 800 a00 c00
 </a>
       <a name="dataWidth" val="32"/>
     </comp>
     <comp lib="4" loc="(180,1070)" name="ROM">
       <a name="appearance" val="classic"/>
       <a name="contents">addr/data: 8 16
-101 202 40*0 8282 22*0 8484 0 8383
-62*0 8485 8484
+101 202 16*0 8282 8383 22*0 8484 4*0
+8585 8686 8787 15*0 8989 0 8888 62*0
+8989 8989 898a 0 8b89 898b 8989
 </a>
       <a name="dataWidth" val="16"/>
     </comp>
