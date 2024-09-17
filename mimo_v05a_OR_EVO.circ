@@ -506,18 +506,18 @@
       <a name="bit11" val="2"/>
       <a name="bit12" val="2"/>
       <a name="bit13" val="2"/>
-      <a name="bit14" val="2"/>
-      <a name="bit15" val="2"/>
+      <a name="bit14" val="3"/>
+      <a name="bit15" val="3"/>
       <a name="bit2" val="0"/>
       <a name="bit3" val="0"/>
       <a name="bit4" val="1"/>
       <a name="bit5" val="1"/>
       <a name="bit6" val="1"/>
       <a name="bit7" val="1"/>
-      <a name="bit8" val="1"/>
-      <a name="bit9" val="1"/>
+      <a name="bit8" val="2"/>
+      <a name="bit9" val="2"/>
       <a name="facing" val="west"/>
-      <a name="fanout" val="3"/>
+      <a name="fanout" val="4"/>
       <a name="incoming" val="16"/>
     </comp>
     <comp lib="0" loc="(1320,1470)" name="Tunnel">
@@ -1466,7 +1466,7 @@
     <comp lib="5" loc="(1130,1290)" name="RGB Video">
       <a name="color" val="XTerm16 (4 bit)"/>
       <a name="cursor" val="No Cursor"/>
-      <a name="height" val="64"/>
+      <a name="height" val="16"/>
       <a name="reset" val="Synchronous"/>
       <a name="width" val="64"/>
     </comp>
@@ -1572,7 +1572,7 @@
       <a name="font" val="SansSerif bold 24"/>
       <a name="text" val="Address BUS"/>
     </comp>
-    <comp lib="6" loc="(1163,1122)" name="Text">
+    <comp lib="6" loc="(1160,1120)" name="Text">
       <a name="font" val="SansSerif bold 20"/>
       <a name="text" val="RGB"/>
     </comp>
